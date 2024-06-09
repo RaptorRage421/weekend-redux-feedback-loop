@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
+import { Button } from "@mui/material"
 
 
 const UnderstandingForm = () => {
@@ -100,8 +101,8 @@ const UnderstandingForm = () => {
 
                     </div>
                     <div className="button-container">
-                        <button type="button" onClick={goBack}>Back</button>
-                        <button data-testid="next" type="submit">Next</button>
+                        <Button variant="contained" color="secondary" size="small" type="button" onClick={goBack}>Back</Button>
+                        <Button variant="contained"  data-testid="next" size="small" type="submit">Next</Button>
                     </div>
                 </form>
                 

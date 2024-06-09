@@ -1,3 +1,15 @@
+import {
+    Typography,
+    Button,
+    CardContent,
+    CardActions,
+    Card,
+    CardMedia, 
+    CardHeader
+} from "@mui/material"
+
+
+
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
@@ -16,7 +28,7 @@ history.push('/')
         <div className="moreOutside_box">
         <div className="outside_box">
 
-        <div className="inside_box" data-testid="next" onClick={backToStart}><p>Submit New Feedback</p></div>
+        <div className="inside_box" data-testid="next" onClick={backToStart}><span>🌟</span> <span className="text">Submit New Feedback</span> <span>🌟</span></div>
         </div>
         </div>
         </>

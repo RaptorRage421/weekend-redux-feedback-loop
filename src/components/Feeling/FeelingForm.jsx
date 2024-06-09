@@ -1,3 +1,13 @@
+import {
+    Typography,
+    Button,
+    CardContent,
+    CardActions,
+    Card,
+    CardMedia, 
+    CardHeader
+} from "@mui/material"
+
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
@@ -94,7 +104,7 @@ const FeelingForm = () => {
                         </div>
                     </div>
                     <div className="button-container">
-                        <button data-testid="next" type="submit">Submit</button>
+                        <Button data-testid="next" type="submit" variant="contained" color="primary">Submit</Button>
                     </div>
                     </form>
                     

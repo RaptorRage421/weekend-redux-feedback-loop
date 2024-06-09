@@ -28,8 +28,8 @@ justify-content: center;
 
 }
 .outside_box {
-
-  justify-content: center;
+display: flex;
+  align-items: center;
   height: 300px;
   width: 400px;
   border: 1px solid black;
@@ -37,12 +37,13 @@ justify-content: center;
 }
 
 .inside_box {
-  
-  height: 2em;
-
+  font-size: 20px;
+  height: 3em;
+align-items: center;
   display: flex;
-  width: auto;
-  justify-content: center;
+  width: 100%;
+  justify-content: space-evenly;
+  text-align: center;
   color: white;
   background-color: #033076;
 }
