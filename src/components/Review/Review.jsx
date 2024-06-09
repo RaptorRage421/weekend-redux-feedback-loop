@@ -31,7 +31,6 @@ console.log(reviewObject)
 const submitReview = () => {
 axios.post('/api/feedback', reviewObject)
 .then((response) => {
-    dispatch({type: 'CLEAR_ALL'})
     history.push('/submitted')
 })
 .catch((err) => {

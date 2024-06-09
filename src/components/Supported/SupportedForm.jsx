@@ -8,15 +8,26 @@ const SupportedForm = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     let [mySupport, setMySupport] = useState(0)
-    
+    const [errorMessage, setErrorMessage] = useState('')
+
     const handleSupportChange = (event) => {
         event.preventDefault()
         setMySupport(event.target.value)
     }
     const submitSupport = (event) => {
         event.preventDefault()
+        if (!mySupport) {
+            setErrorMessage('Please select an Understanding score before proceeding.')
+            return
+        }
         dispatch({type: 'ADD_SUPPORT', payload: Number(mySupport)})
         history.push('/comments')
+    }
+
+    const goBack = () => {
+        dispatch({type: 'CLEAR_UNDERSTANDING'})
+        history.goBack()
+
     }
     
         return (
@@ -30,7 +41,7 @@ const SupportedForm = () => {
                 <label htmlFor="1">1</label>
                 <input
                 data-testid="input"
-                    type="radio"
+                    type="checkbox"
                     id='1'
                     name='understanding'
                     value='1'
@@ -42,7 +53,7 @@ const SupportedForm = () => {
                 <label htmlFor="2">2</label>
                 <input
                 data-testid="input"
-                    type="radio"
+                    type="checkbox"
                     id='2'
                     name='understanding'
                     value='2'
@@ -54,7 +65,7 @@ const SupportedForm = () => {
                 <label htmlFor="3">3</label>
                 <input
                 data-testid="input"
-                    type="radio"
+                    type="checkbox"
                     id='3'
                     name='understanding'
                     value='3'
@@ -66,7 +77,7 @@ const SupportedForm = () => {
                 <label htmlFor="4">4</label>
                 <input
                 data-testid="input"
-                    type="radio"
+                    type="checkbox"
                     id='4'
                     name='understanding'
                     value='4'
@@ -78,7 +89,7 @@ const SupportedForm = () => {
                 <label htmlFor="5">5</label>
                 <input
                 data-testid="input"
-                    type="radio"
+                    type="checkbox"
                     id='5'
                     name='understanding'
                     value='5'
@@ -86,13 +97,18 @@ const SupportedForm = () => {
                     onChange={handleSupportChange}
                 />
                 </div>
-                <button data-testid="next" type="submit">Submit</button>
                 </div>
+                <div className="button-container">
+                        <button type="button" onClick={goBack}>Back</button>
+                        <button data-testid="next" type="submit">Next</button>
+                    </div>
+                </form>
                 
-            </form>
             </div>
-            </>
-        )
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+        </>
+    )
+        
     
     }
 

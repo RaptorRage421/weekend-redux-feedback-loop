@@ -17,22 +17,33 @@ const CommentsForm = () => {
         history.push('/review')
     }
     
+    const goBack = () => {
+        dispatch({type: 'CLEAR_SUPPORT'})
+        history.goBack()
+
+    }
         return (
             <>
             <form onSubmit={submitComments}>
-            <input
+            <div>
+                <input
+            type="text"
             data-testid="input"
             className="inputs"
             onChange={handleCommentsChange}
             value={myComments}
             placeholder="Comments...?"
             />
-            <button data-testid="next" type="submit">Submit</button>
+            </div>
             
-
-    
-            </form>
-            </>
+            <div className="button-container">
+                        <button type="button" onClick={goBack}>Back</button>
+                        <button data-testid="next" type="submit">Next</button>
+                    </div>
+                </form>
+                
+            
+        </>
         )
     
     }

@@ -6,6 +6,8 @@ const commentState = (state = [], action) => {
     switch (action.type) {
         case 'ADD_COMMENTS':
             return [...state, action.payload]
+        case 'CLEAR_COMMENT':
+            return []
         case 'CLEAR_ALL':
             return []
         default:
@@ -17,6 +19,8 @@ const feelingState = (state = [], action) => {
     switch (action.type) {
         case 'ADD_FEELINGS':
             return [...state, action.payload]
+            case 'CLEAR_FEELING':
+                return []
         case 'CLEAR_ALL':
             return []
         default:
@@ -25,8 +29,8 @@ const feelingState = (state = [], action) => {
 
 }
 
-const feedbackList = (state=[], action) => {
-    switch(action.type) {
+const feedbackList = (state = [], action) => {
+    switch (action.type) {
         case 'FETCH_FEEDBACK':
             return action.payload
         default:
@@ -38,6 +42,8 @@ const supportState = (state = [], action) => {
     switch (action.type) {
         case 'ADD_SUPPORT':
             return [...state, action.payload]
+        case 'CLEAR_SUPPORT':
+            return []
         case 'CLEAR_ALL':
             return []
         default:
@@ -49,6 +55,8 @@ const understandingState = (state = [], action) => {
     switch (action.type) {
         case 'ADD_UNDERSTANDING':
             return [...state, action.payload]
+        case 'CLEAR_UNDERSTANDING':
+            return []
         case 'CLEAR_ALL':
             return []
         default:

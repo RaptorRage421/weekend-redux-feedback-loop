@@ -21,3 +21,28 @@
 h4 {
   font-style: italic;
 }
+
+.moreOutside_box {
+display: flex;
+justify-content: center;
+
+}
+.outside_box {
+
+  justify-content: center;
+  height: 300px;
+  width: 400px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.inside_box {
+  
+  height: 2em;
+
+  display: flex;
+  width: auto;
+  justify-content: center;
+  color: white;
+  background-color: #033076;
+}
