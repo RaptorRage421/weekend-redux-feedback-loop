@@ -6,14 +6,13 @@ import Swal from "sweetalert2"
 
 const Review = () => {
 const history = useHistory()
-const dispatch = useDispatch()
 const feelingState = useSelector(store => store.feelingState)
 const understandingState = useSelector(store => store.understandingState)
 const supportState = useSelector(store => store.supportState)
 const commentState = useSelector(store => store.commentState)
 
 let reviewObject = {}
-console.log("feelingState", feelingState)
+
 for (let feeling of feelingState){
 reviewObject.feeling = feeling
 }
@@ -31,17 +30,35 @@ console.log(reviewObject)
 
 const submitReview = () => {
     if (!reviewObject.feeling || !reviewObject.understanding || !reviewObject.support) {
-        Swal.fire('Please Go back and Fill out ALL fields.');
-        return; // Exit the function if any data is empty
+        Swal.fire({
+            icon: 'error',
+            title: 'Missing Data',
+            text: 'Please start over and enter ALL fields.',
+            confirmButtonText: 'OK',
+        }).then((result) => {
+            
+                history.push('/');
+            
+        });
+        return;
     }
-axios.post('/api/feedback', reviewObject)
-.then((response) => {
-    history.push('/submitted')
-})
-.catch((err) => {
-    console.error("Error Submitting your Feedback", err)
-})
+
+    axios.post('/api/feedback', reviewObject)
+        .then((response) => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Your feedback has been submitted successfully.',
+                confirmButtonText: 'OK',
+            }).then((result) => {
+                    history.push('/submitted')
+            });
+        })
+        .catch((err) => {
+            console.error("Error Submitting your Feedback", err)
+        });
 }
+
 
 
     return (
