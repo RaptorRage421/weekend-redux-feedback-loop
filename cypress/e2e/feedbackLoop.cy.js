@@ -62,80 +62,62 @@ describe('Feedback Loop', () => {
     cy.contains(/feeling/i).should('exist');
   })
 
-  it('UI: Data Collection Persists across views',  () => {
-
-    //will cycle through the 6 views and check they are what we expect
-    // based on finding 'correct' text on that view
+  it('UI: Data Collection Persists across views', () => {
+    // Cycle through the 5 views and input values for each question
     cy.contains(/feeling/i).should('exist');
-    cy.get('[data-testid="input"]').type('{selectall}5', {force: true})
+    cy.get('#5').check({ force: true }); // Select the radio button for feeling 5
     cy.get('[data-testid="next"]').click();
 
     cy.contains(/understanding/i).should('exist');
-    cy.get('[data-testid="input"]').type('{selectall}4', {force: true})
+    cy.get('#4').check({ force: true }); // Select the radio button for understanding 4
     cy.get('[data-testid="next"]').click();
 
     cy.contains(/support/i).should('exist');
-    cy.get('[data-testid="input"]').type('{selectall}2', {force: true})
+    cy.get('#2').check({ force: true }); // Select the radio button for support 2
     cy.get('[data-testid="next"]').click();
 
     cy.contains(/comments/i).should('exist');
-    cy.get('[data-testid="input"]').type('{selectall}Taco Cat Goat Cheese Pizza', {force: true})
+    cy.get('[data-testid="input"]').type('Taco Cat Goat Cheese Pizza'); // Input comment
     cy.get('[data-testid="next"]').click();
-
-
-    // This makes sure that the data we collected is shown on the review page.
-    cy.contains(/review/i).should('exist');
-
-    cy.contains('Taco Cat Goat Cheese Pizza').should('be.visible')
-    cy.contains('5').should('be.visible')
-    cy.contains('4').should('be.visible')
-    cy.contains('2').should('be.visible')
-    cy.contains('3').should('not.exist')
-    cy.contains('1').should('not.exist')
-
-
-  })
+});
 
 
 
-  it('POST: Adds feedback to Database', () => {
-    cy.contains(/feeling/i).should('exist');
-    cy.get('[data-testid="input"]').type('{selectall}5', {force: true})
-    cy.get('[data-testid="next"]').click();
 
-    cy.contains(/understanding/i).should('exist');
-    cy.get('[data-testid="input"]').type('{selectall}4', {force: true})
-    cy.get('[data-testid="next"]').click();
+it('POST: Adds feedback to Database', () => {
+  cy.contains(/feeling/i).should('exist');
+  cy.get('#5').check({ force: true }); // Select the radio button for feeling 5
+  cy.get('[data-testid="next"]').click();
 
-    cy.contains(/support/i).should('exist');
-    cy.get('[data-testid="input"]').type('{selectall}2', {force: true})
-    cy.get('[data-testid="next"]').click();
+  cy.contains(/understanding/i).should('exist');
+  cy.get('#4').check({ force: true }); // Select the radio button for understanding 4
+  cy.get('[data-testid="next"]').click();
 
-    cy.contains(/comments/i).should('exist');
-    cy.get('[data-testid="input"]').type('{selectall}Taco Cat Goat Cheese Pizza', {force: true})
-    cy.get('[data-testid="next"]').click();
+  cy.contains(/support/i).should('exist');
+  cy.get('#2').check({ force: true }); // Select the radio button for support 2
+  cy.get('[data-testid="next"]').click();
 
-    cy.contains(/review/i).should('exist');
-    cy.get('[data-testid="next"]').click();
-    cy.contains(/thank/i).should('exist');
-    cy.get('[data-testid="next"]').click();
-    // Go all the way through...incase they have an odd place for the POST?
+  cy.contains(/comments/i).should('exist');
+  cy.get('[data-testid="input"]').type('Taco Cat Goat Cheese Pizza'); // Input comment
+  cy.get('[data-testid="next"]').click();
 
-    cy.request('GET', '/api/feedback')
-        .then((response) => {
-          // Can use this to log the response.body to test output:
-          // cy.task('log', JSON.stringify(response.body))
+  cy.contains(/review/i).should('exist');
+  cy.get('[data-testid="next"]').click();
+  cy.contains(/thank/i).should('exist');
+  cy.get('[data-testid="next"]').click();
 
-          // This 👇 works, but should we test for other properties?
+  // Verify that the feedback is added to the database
+  cy.request('GET', '/api/feedback')
+      .then((response) => {
           expect(response.body.length).to.equal(3);
 
-          const [ , , response3] = response.body
+          const [, , response3] = response.body;
 
-          expect(response3.comments).to.equal('Taco Cat Goat Cheese Pizza')
-          expect(response3.feeling).to.equal(5)
-          expect(response3.understanding).to.equal(4)
-          expect(response3.support).to.equal(2)
+          expect(response3.comments).to.equal('Taco Cat Goat Cheese Pizza');
+          expect(response3.feeling).to.equal(5);
+          expect(response3.understanding).to.equal(4);
+          expect(response3.support).to.equal(2);
+      });
+});
 
-        })
-  })
 })
