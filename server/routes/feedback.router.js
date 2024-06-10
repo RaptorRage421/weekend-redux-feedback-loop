@@ -39,18 +39,18 @@ router.delete('/:id', (req, res) => {
 
 router.put('/:id/flag', (req, res) => {
     const feedbackId = req.params.id;
-    const isFlagged = req.body.isFlagged; // Assuming you'll send isFlagged as true/false in the request body
+    const isFlagged = req.body.isFlagged;
 
     const queryText = `UPDATE "feedback" SET "flagged" = $1 WHERE "id" = $2`;
 
     pool.query(queryText, [isFlagged, feedbackId])
         .then((result) => {
             console.log('Feedback entry flagged');
-            res.sendStatus(204); // No content
+            res.sendStatus(204); 
         })
         .catch((err) => {
             console.error('Error updating feedback entry:', err);
-            res.sendStatus(500); // Internal server error
+            res.sendStatus(500); 
         });
 });
 
