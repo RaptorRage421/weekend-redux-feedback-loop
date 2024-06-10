@@ -15,15 +15,10 @@ const SubmittedReview = () => {
     }
 
     return (
-        <div className="submitted-review-container"> {/* Add a container for styling */}
+        <div className="submitted-review-container"> 
             <h1>Thank You For Submitting Your Feedback!</h1>
-
             <div className="moreOutside_box">
-
                 <div className="outside_box">
-                    <div>
-                         {/* Move the FeedbackIcon component here */}
-                    </div>
 
                     <div className="inside_box" data-testid="next" onClick={backToStart}>
                         <span><FeedbackIcon className="feedback-icon" /></span><span className="text">Submit New Feedback</span>

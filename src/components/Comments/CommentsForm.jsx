@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { Button } from "@mui/material"
+import TextField from '@mui/material/TextField';
 
 const CommentsForm = () => {
     const history = useHistory()
@@ -27,14 +28,14 @@ const CommentsForm = () => {
             <>
             <form onSubmit={submitComments}>
             <div>
-                <input
-            type="text"
-            data-testid="input"
-            className="inputs"
-            onChange={handleCommentsChange}
-            value={myComments}
-            placeholder="Comments...?"
-            />
+                <TextField 
+                type="text"
+                data-testid="input"
+                className="inputs"
+                onChange={handleCommentsChange}
+                value={myComments}
+                id="outlined-basic" label="Comments..." variant="outlined" />
+               
             </div>
             
             <div className="button-container">
