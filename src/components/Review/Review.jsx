@@ -35,7 +35,8 @@ const submitReview = () => {
             title: 'Missing Data',
             text: 'Please start over and enter ALL fields.',
             confirmButtonText: 'OK',
-        }).then((result) => {
+        })
+        .then((result) => {
             
                 history.push('/');
             
@@ -50,9 +51,8 @@ const submitReview = () => {
                 title: 'Success!',
                 text: 'Your feedback has been submitted successfully.',
                 confirmButtonText: 'OK',
-            }).then((result) => {
-                    history.push('/submitted')
             });
+            history.push('/submitted')
         })
         .catch((err) => {
             console.error("Error Submitting your Feedback", err)

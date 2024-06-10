@@ -27,7 +27,7 @@ const UnderstandingForm = () => {
 
     const goBack = () => {
         dispatch({type: 'CLEAR_FEELING'})
-        history.goBack()
+        history.push('/')
 
     }
     const clearState = () => {
@@ -38,7 +38,7 @@ const UnderstandingForm = () => {
 
     return (
         <>
-            <h3>My Understanding...</h3>
+    
             <div className='flexbox'>
                 <form onSubmit={submitUnderstanding}>
                     <div className="center">
@@ -106,8 +106,8 @@ const UnderstandingForm = () => {
 
                     </div>
                     <div className="button-container">
-                        <Button variant="contained" color="secondary" size="small" type="button" onClick={goBack}>Back</Button>
-                        <Button onClick={clearState} variant="contained"  data-testid="next" size="small" type="submit">Next</Button>
+                        <Button color="primary" size="small" type="button" onClick={goBack}>Back</Button>
+                        <Button onClick={clearState} data-testid="next" size="small" type="submit">Next</Button>
                     </div>
                 </form>
                 

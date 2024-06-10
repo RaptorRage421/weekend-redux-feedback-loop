@@ -5,7 +5,7 @@ const Supported = () => {
 
     return (
         <>
-        <h3>Support</h3>
+        <h1>How well are you being supported?</h1>
         <SupportedForm />
         </>
     )

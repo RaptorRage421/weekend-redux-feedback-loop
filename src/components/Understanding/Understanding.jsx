@@ -4,7 +4,7 @@ const Understanding = () => {
     
     return (
         <>
-        <h3>Understanding</h3>
+        <h1>How well are you understanding the material?</h1>
         <UnderstandingForm />
         </>
     )

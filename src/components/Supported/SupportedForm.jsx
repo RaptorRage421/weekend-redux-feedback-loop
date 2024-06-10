@@ -18,7 +18,7 @@ const SupportedForm = () => {
     const submitSupport = (event) => {
         event.preventDefault()
         if (!mySupport) {
-            setErrorMessage('Please select an Understanding score before proceeding.')
+            setErrorMessage('Please select a Support score before proceeding.')
             return
         }
         dispatch({type: 'ADD_SUPPORT', payload: Number(mySupport)})
@@ -27,7 +27,7 @@ const SupportedForm = () => {
 
     const goBack = () => {
         dispatch({type: 'CLEAR_UNDERSTANDING'})
-        history.goBack()
+        history.push('/understanding')
 
     }
     const clearState = () => {
@@ -38,7 +38,7 @@ const SupportedForm = () => {
 
         return (
             <>
-            <h3>My Support...</h3>
+        
               <div className='flexbox'>
        <form onSubmit={submitSupport}>
         <div className="center">
@@ -105,8 +105,8 @@ const SupportedForm = () => {
                 </div>
                 </div>
                 <div className="button-container">
-                        <Button type="button" onClick={goBack}>Back</Button>
-                        <Button onClick={clearState} data-testid="next" type="submit">Next</Button>
+                        <Button size="small" type="button" onClick={goBack}>Back</Button>
+                        <Button size="small" onClick={clearState} data-testid="next" type="submit">Next</Button>
                     </div>
                 </form>
                 

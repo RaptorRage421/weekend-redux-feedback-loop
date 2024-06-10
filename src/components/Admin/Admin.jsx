@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import { Button } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
+import FlagIcon from '@mui/icons-material/Flag';
 import './Admin.css'
 
 
@@ -15,9 +16,9 @@ const Admin = () => {
         fetchFeedback()
     }, [])
     const dispatch = useDispatch()
-    const [isClicked, setIsClicked] = useState(false);
+    const [isClicked, setIsClicked] = useState([]);
     const feedbackList = useSelector(store => store.feedbackList)
-
+    const flaggedItems = useSelector(store => store.flaggedItems);
 
     const fetchFeedback = () => {
         axios.get('/api/feedback')
@@ -49,7 +50,7 @@ const Admin = () => {
         axios.put(`/api/feedback/${id}/flag`, { isFlagged: true })
             .then((response) => {
                 dispatch({ type: 'UPDATE_FLAGGED_STATUS', payload: id });
-                setIsClicked(true)
+                setIsClicked(prevState => [...prevState, id])
             })
             .catch((err) => {
                 console.error("Error updating flagged status", err);
@@ -84,7 +85,9 @@ const Admin = () => {
                             <td>{feedback.support}</td>
                             <td>{feedback.comments}</td>
                             <td>{formatDate(feedback.date)}</td>
-                            <td className={isClicked ? "flagged" : ""}>{feedback.flagged ? <div>🚩</div> : <Button onClick={() => markAsFlagged(feedback.id)}>Request Review</Button>}</td>
+                            <td className={isClicked.includes(feedback.id) ? "flagged" : ""}>
+                                {feedback.flagged ? <div><FlagIcon color="error"/></div> : <Button onClick={() => markAsFlagged(feedback.id)}>Request Review</Button>}
+                            </td>
                             <td><Button onClick={() => handleDelete(feedback.id)}><DeleteIcon /></Button></td>
                         </tr>)}
                 </tbody>

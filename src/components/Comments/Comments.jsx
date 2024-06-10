@@ -5,7 +5,7 @@ const Comments = () => {
 
     return (
         <>
-        <h3>Comments</h3>
+        <h1>Any comments you would like to leave?</h1>
         <CommentsForm />
         </>
     )

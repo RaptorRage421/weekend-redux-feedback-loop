@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
+import { Button } from "@mui/material"
 
 const CommentsForm = () => {
     const history = useHistory()
@@ -37,8 +38,8 @@ const CommentsForm = () => {
             </div>
             
             <div className="button-container">
-                        <button type="button" onClick={goBack}>Back</button>
-                        <button data-testid="next" type="submit">Next</button>
+                        <Button type="button" onClick={goBack}>Back</Button>
+                        <Button data-testid="next" type="submit">Next</Button>
                     </div>
                 </form>
                 

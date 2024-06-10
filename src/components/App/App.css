@@ -30,10 +30,10 @@ justify-content: center;
 .outside_box {
 display: flex;
 flex-direction: column;
-  align-items: center;
+  align-items: left;
   height: 300px;
   width: 400px;
-
+text-align: left;
   background-color: white;
 }
 
@@ -48,9 +48,24 @@ align-items: center;
   text-align: center;
   color: white;
   background-color: #033076;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .errorMessage {
   color: red;
   text-transform: uppercase;
+}
+
+.submitted-review-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedback-icon {
+  margin-right: 10px; /* Adjust margin as needed */
+}
+.text {
+    margin: auto;
 }

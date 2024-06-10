@@ -19,6 +19,7 @@ const FeelingForm = () => {
     const dispatch = useDispatch()
     const [myFeelings, setMyFeelings] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
+    
     const handleFeelingChange = (event) => {
         event.preventDefault()
         setMyFeelings(event.target.value)
@@ -109,7 +110,7 @@ const clearState = () => {
                         </div>
                     </div>
                     <div className="button-container">
-                        <Button onClick={clearState} data-testid="next" type="submit" variant="contained" color="primary">Submit</Button>
+                        <Button onClick={clearState} data-testid="next" size="small" type="submit" color="primary">Submit</Button>
                     </div>
                     </form>
                     
