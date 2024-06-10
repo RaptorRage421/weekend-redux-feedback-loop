@@ -95,15 +95,15 @@ function ResponsiveAppBar() {
                     </Box>
 
                    
-                        <ReviewsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                        <ReviewsIcon sx={{ display: { xs: 'flex', md: 'flex' }, mr: 1 }} />
                         <Typography
                             variant="h6"
                             noWrap
                             component="div"
                             sx={{
-                                display: { xs: 'none', md: 'flex' },
+                                display: { xs: 'flex', md: 'flex' },
                                 fontFamily: 'monospace',
-                                fontWeight: 700,
+                                fontWeight: 900,
                                 letterSpacing: '.3rem',
                                 color: 'inherit',
                                 textDecoration: 'none',
@@ -115,14 +115,14 @@ function ResponsiveAppBar() {
 
                     <Box sx={{ flexGrow: 1 }} />
 
-                    <ReviewsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <ReviewsIcon sx={{ display: { xs: 'none', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
                         sx={{
-                            display: { xs: 'flex', md: 'none' },
+                            display: { xs: 'none', md: 'none' },
                             fontFamily: 'monospace',
-                            fontWeight: 700,
+                            fontWeight: 900,
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
