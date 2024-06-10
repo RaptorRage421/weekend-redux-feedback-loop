@@ -32,7 +32,7 @@ const Admin = () => {
     }
     const formatDate = (rawDate) => {
         const date = new Date(rawDate);
-        return date.toLocaleDateString(); // You can customize this method according to your preferred date format
+        return date.toLocaleDateString(); 
     };
 
 
