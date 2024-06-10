@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
+import { Button } from "@mui/material"
 
 const SupportedForm = () => {
 
@@ -29,7 +30,12 @@ const SupportedForm = () => {
         history.goBack()
 
     }
+    const clearState = () => {
+
+        dispatch({type: 'CLEAR_COMMENTS'})
     
+    }
+
         return (
             <>
             <h3>My Support...</h3>
@@ -99,13 +105,13 @@ const SupportedForm = () => {
                 </div>
                 </div>
                 <div className="button-container">
-                        <button type="button" onClick={goBack}>Back</button>
-                        <button data-testid="next" type="submit">Next</button>
+                        <Button type="button" onClick={goBack}>Back</Button>
+                        <Button onClick={clearState} data-testid="next" type="submit">Next</Button>
                     </div>
                 </form>
                 
             </div>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <div className="errorMessage">{errorMessage && <p className="error-message">{errorMessage}</p>}</div>
         </>
     )
         

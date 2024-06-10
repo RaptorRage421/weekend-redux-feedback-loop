@@ -34,6 +34,11 @@ const FeelingForm = () => {
         setMyFeelings('')
     }
 
+const clearState = () => {
+
+    dispatch({type: 'CLEAR_UNDERSTANDING'})
+
+}
 
 
     return (
@@ -104,12 +109,12 @@ const FeelingForm = () => {
                         </div>
                     </div>
                     <div className="button-container">
-                        <Button data-testid="next" type="submit" variant="contained" color="primary">Submit</Button>
+                        <Button onClick={clearState} data-testid="next" type="submit" variant="contained" color="primary">Submit</Button>
                     </div>
                     </form>
                     
             </div>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <div className="errorMessage">{errorMessage && <p className="error-message">{errorMessage}</p>}</div>
         </>
     )
 }

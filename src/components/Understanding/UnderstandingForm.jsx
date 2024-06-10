@@ -30,6 +30,11 @@ const UnderstandingForm = () => {
         history.goBack()
 
     }
+    const clearState = () => {
+
+        dispatch({type: 'CLEAR_SUPPORT'})
+    
+    }
 
     return (
         <>
@@ -102,12 +107,12 @@ const UnderstandingForm = () => {
                     </div>
                     <div className="button-container">
                         <Button variant="contained" color="secondary" size="small" type="button" onClick={goBack}>Back</Button>
-                        <Button variant="contained"  data-testid="next" size="small" type="submit">Next</Button>
+                        <Button onClick={clearState} variant="contained"  data-testid="next" size="small" type="submit">Next</Button>
                     </div>
                 </form>
                 
             </div>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <div className="errorMessage">{errorMessage && <p className="error-message">{errorMessage}</p>}</div>
         </>
     )
 

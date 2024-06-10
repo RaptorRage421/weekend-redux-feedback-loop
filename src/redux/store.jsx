@@ -19,8 +19,8 @@ const feelingState = (state = [], action) => {
     switch (action.type) {
         case 'ADD_FEELINGS':
             return [...state, action.payload]
-            case 'CLEAR_FEELING':
-                return []
+        case 'CLEAR_FEELING':
+            return []
         case 'CLEAR_ALL':
             return []
         default:
@@ -33,6 +33,15 @@ const feedbackList = (state = [], action) => {
     switch (action.type) {
         case 'FETCH_FEEDBACK':
             return action.payload
+        case 'DELETE_FEEDBACK':
+            return state.filter((feedback) => feedback.id !== action.payload);
+        case 'UPDATE_FLAGGED_STATUS':
+            return state.map((feedback) => {
+                if (feedback.id === action.payload) {
+                    return { ...feedback, flagged: true };
+                }
+                return feedback;
+            });
         default:
             return state
     }

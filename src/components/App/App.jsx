@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { HashRouter as Router, Route, Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Header from '../Header/Header';
+import ResponsiveAppBar from '../ButtonAppBar/ButtonAppBar';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Supported from '../Supported/Supported';
@@ -20,30 +21,33 @@ function App() {
       
       <Router>
         <Route exact path='/'>
-          <Header />
+          <ResponsiveAppBar />
           <Feeling />
         </Route>
         <Route path='/understanding'>
-        <Header />
+        <ResponsiveAppBar />
         <Understanding />
         </Route>
         
         <Route path='/support'>
-        <Header />
+        <ResponsiveAppBar />
         <Supported />
         </Route>
         
         <Route path='/comments'>
-        <Header />
+        <ResponsiveAppBar />
         <Comments />
         </Route>
         <Route path='/review'>
+        <ResponsiveAppBar />
         <Review />
         </Route>
         <Route path='/submitted'>
+        <ResponsiveAppBar />
           <SubmittedReview />
         </Route>
         <Route path='/admin'>
+        <ResponsiveAppBar />
         <Admin />
         </Route>
         
