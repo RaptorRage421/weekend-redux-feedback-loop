@@ -16,7 +16,7 @@ const Admin = () => {
         fetchFeedback()
     }, [])
     const dispatch = useDispatch()
-    const [isClicked, setIsClicked] = useState([]);
+   
     const feedbackList = useSelector(store => store.feedbackList)
     const flaggedItems = useSelector(store => store.flaggedItems);
 
@@ -50,7 +50,7 @@ const Admin = () => {
         axios.put(`/api/feedback/${id}/flag`, { isFlagged: true })
             .then((response) => {
                 dispatch({ type: 'UPDATE_FLAGGED_STATUS', payload: id });
-                setIsClicked(prevState => [...prevState, id])
+                
             })
             .catch((err) => {
                 console.error("Error updating flagged status", err);
@@ -85,7 +85,7 @@ const Admin = () => {
                             <td>{feedback.support}</td>
                             <td>{feedback.comments}</td>
                             <td>{formatDate(feedback.date)}</td>
-                            <td className={isClicked.includes(feedback.id) ? "flagged" : ""}>
+                            <td className={feedback.flagged ? "flagged" : ""}>
                                 {feedback.flagged ? <div><FlagIcon color="error"/></div> : <Button onClick={() => markAsFlagged(feedback.id)}>Request Review</Button>}
                             </td>
                             <td><Button onClick={() => handleDelete(feedback.id)}><DeleteIcon /></Button></td>

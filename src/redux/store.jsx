@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import logger from 'redux-logger';
 import { composeWithDevTools } from '@redux-devtools/extension';
 
+
 const commentState = (state = [], action) => {
     switch (action.type) {
         case 'ADD_COMMENTS':
