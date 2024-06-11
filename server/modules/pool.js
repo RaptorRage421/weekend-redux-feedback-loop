@@ -18,7 +18,7 @@ if (process.env.DATABASE_URL) {
 // we'll connect to the postgres database that is 
 // also running on our computer (localhost)
 else {
-    let databaseName = 'prime_feedback'
+    let databaseName = 'prime_feedback_jyyk'
     
     if (process.env.NODE_ENV === 'test') {
       databaseName = 'prime_testing'

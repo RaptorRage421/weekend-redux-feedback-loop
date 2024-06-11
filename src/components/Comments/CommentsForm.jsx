@@ -21,7 +21,7 @@ const CommentsForm = () => {
     
     const goBack = () => {
         dispatch({type: 'CLEAR_SUPPORT'})
-        history.goBack()
+        history.push('/support')
 
     }
         return (
